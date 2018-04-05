@@ -1,0 +1,29 @@
+pipeline {
+    agent any
+   // environment {
+       // PATH='C:\Projects\node\'
+   //  setx path "%path%;C:\\Projects\\node\\"
+//	}
+    stages {
+        stage('Clone from git') {
+            steps {
+               
+                    git credentialsId: 'c506d000-0262-41bb-971a-d5dfa3f2e8bf', url: 'git@github.com:arun-nallamayan/Pipeline-Project.git'
+
+            }
+        }
+        stage('NPM Check') {
+            steps {
+                   bat 'setx path "%path%;C:\\Projects\\node\\"'
+                   bat 'C:\\Projects\\node\\node.exe -v'
+     
+            }
+        }
+        stage('Install ionic'){
+            steps {
+                bat 'C:\\Projects\\node\\npm.cmd install ionic'
+                 }
+            }
+        
+    }
+}
