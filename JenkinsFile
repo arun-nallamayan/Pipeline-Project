@@ -1,3 +1,4 @@
+## pipeline example for cloning and install ionic using node
 pipeline {
     agent any
     environment {
